@@ -1,7 +1,7 @@
 1. make sure that Node.js LTS version installed - https://nodejs.org/en/
 and node -v or npm -v works fine
 2. run `npm install` to download all required packages
-3. start project with `npm run start` command
+3. start project with `npm start` command
 
 better to run compilation to find erros faster
 
