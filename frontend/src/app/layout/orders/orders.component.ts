@@ -25,7 +25,7 @@ export class OrdersComponent implements OnInit {
 	constructor(private _ordersService: OrdersService) { }
 
 	public ngOnInit() {
-		this._ordersService.getOrders().subscribe((data: IOrderModel[]) => this.orders = data);
+		this._ordersService.getOrders().subscribe((data: IOrderModel[]) => this.orders = data, (error) => this.orders = null);
 	}
 
 	public select(e: any, order: IOrderModel) {
@@ -38,6 +38,11 @@ export class OrdersComponent implements OnInit {
 					this.QtySumm = this.orderProducts.map(x => x.qty).reduce((a, b) => a + b);
 					this.PriceSumm = this.orderProducts.map(x => x.price).reduce((a, b) => a + b);
 					this.TotalSumm = this.orderProducts.map(x => x.total).reduce((a, b) => a + b);
+				}, (err) => {
+					this.orderProducts = null;
+					this.QtySumm = null;
+					this.PriceSumm = null;
+					this.TotalSumm = null;
 				});
 
 		}
